@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {GameList} from './components/GameList'
 import {Navbar} from './components/Navbar'
 import {Footer} from './components/Footer'
 import {Home} from './pages/Home'
