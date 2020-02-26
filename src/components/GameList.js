@@ -6,14 +6,11 @@ export class GameList extends Component{
   static propTypes = {
     games:PropTypes.array
   }
-  //?search=harry potter chamber of secrets
-
 
   render(){
     let {games} = this.props
     return(
-      <div>
-        <div className="game-list">
+        <div className="card-columns m-5 animated fadeIn fast">
           {games.map(game => {
             return (
               <Game
@@ -26,7 +23,6 @@ export class GameList extends Component{
             )
           })}
         </div>
-      </div>
     )
   }
 }

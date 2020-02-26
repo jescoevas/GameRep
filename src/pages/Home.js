@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {GameList} from '../components/GameList'
+import {Loading} from '../components/Loading'
 
 export class Home extends Component{
   constructor(){
@@ -8,6 +9,7 @@ export class Home extends Component{
       games:[]
     }
   }
+  //?search=harry potter chamber of secrets
   componentDidMount(){
     fetch(`https://api.rawg.io/api/games`).then(data => data.json())
       .then(data => {
@@ -16,11 +18,15 @@ export class Home extends Component{
       })
   }
 
-  render(){
+  _renderResults = () => {
     let {games} = this.state
+    return games.length !==0 ? <GameList games={games}/> : <Loading/>
+  }
+
+  render(){
     return (
       <div>
-        <GameList games={games}/>
+        {this._renderResults()}
       </div>
     )
   }

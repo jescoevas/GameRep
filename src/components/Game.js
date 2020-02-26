@@ -13,7 +13,7 @@ export class Game extends Component{
   render(){
     let {id, name, background_image, rating, genres} = this.props
     return (
-      <div className="card game-list-item">
+      <div className="card game">
         <img src={background_image} className="card-img-top" alt={name}/>
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
@@ -23,9 +23,10 @@ export class Game extends Component{
                       {genre.name}
                     </span>
             })}
-            Rating: {rating}
+            <br/>
+            <span className="badge badge-pill badge-success">Rating: {rating}</span>
           </p>
-          <Link to={`/game/${id}`}>
+          <Link to={`/show/${id}`}>
             <button type="button" className="btn btn-outline-success btn-block">
               Ver detalles
             </button>

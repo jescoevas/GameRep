@@ -1,15 +1,6 @@
-.game-list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 16px;
-}
 
-.game-list-item{
-  margin-bottom: 10%;
-  width: 300px;
-  height: 500px;
-  color: black;
+.game{
+  background-color: #343A40;
 }
 
 footer {
