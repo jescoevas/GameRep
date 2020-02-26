@@ -26,7 +26,7 @@ export class Game extends Component{
             <br/>
             <span className="badge badge-pill badge-success">Rating: {rating}</span>
           </p>
-          <Link to={`/show/${id}`}>
+          <Link to={`/game/show/${id}`} className='link'>
             <button type="button" className="btn btn-outline-success btn-block">
               Ver detalles
             </button>

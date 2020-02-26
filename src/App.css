@@ -1,6 +1,36 @@
-
 .game{
   background-color: #343A40;
+  color: #28A645;
+}
+
+hr{
+  background-color: #28A645;
+}
+
+.gamesearch:focus{
+  background-color:#343A40;
+  color: #28A645;
+  border-color: #28A645;
+  text-decoration: none;
+}
+
+.gamesearch{
+  background-color:#343A40;
+  color: #28A645;
+  border-color: #28A645;
+}
+
+.row, h2{
+  color: #28A645;
+}
+
+.link{
+  text-decoration: none !important;
+}
+
+.jail{
+  border-style: solid;
+  border-color: #28A645;
 }
 
 footer {
@@ -8,7 +38,7 @@ footer {
     bottom: 0%;
     text-align: center;
     width: 100%;
-    color: white;
+    color: #28A645;
     height: 24px;
 }
 
