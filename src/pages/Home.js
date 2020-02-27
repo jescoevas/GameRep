@@ -13,7 +13,6 @@ export class Home extends Component{
   componentDidMount(){
     fetch(`https://api.rawg.io/api/games`).then(data => data.json())
       .then(data => {
-        console.log(data.results);
         this.setState({games:data.results})
       })
   }

@@ -7,17 +7,11 @@ hr{
   background-color: #28A645;
 }
 
-.gamesearch:focus{
+ .gamesearch, .gamesearch:focus{
   background-color:#343A40;
   color: #28A645;
   border-color: #28A645;
   text-decoration: none;
-}
-
-.gamesearch{
-  background-color:#343A40;
-  color: #28A645;
-  border-color: #28A645;
 }
 
 .row, h2{

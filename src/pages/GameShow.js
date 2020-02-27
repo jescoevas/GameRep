@@ -33,7 +33,7 @@ export class GameShow extends Component{
   }
 
   render(){
-    let {name, description, released, background_image,
+    let {name, description_raw:description, released, background_image,
       rating, metacritic_url, platforms, developers, publishers, genres} = this.state.game
 
     if(name === ''){
@@ -52,6 +52,18 @@ export class GameShow extends Component{
             <span className='badge badge-pill badge-success'>Metacritic URL: {
               metacritic_url==='' ? 'Not found' : <a href={metacritic_url}>{metacritic_url}</a>
             }</span>
+            <br/>
+            {genres.map(genre => {
+              return <span key={genre.id} className="badge badge-pill badge-success">
+                      {genre.name}
+                    </span>
+            })}
+            <br/>
+            {platforms.map(platform => {
+              return <span key={platform.platform.id} className="badge badge-pill badge-success">
+                      {platform.platform.name}
+                    </span>
+            })}
           </div>
           <div className='col-8'>
             <h1>{name}</h1>
@@ -61,7 +73,7 @@ export class GameShow extends Component{
           </div>
         </div>
         <hr/>
-        <h2>Developers</h2>
+        <h2 style={{textDecoration:'underline'}}>Developers</h2>
         <div className="card-columns mt-4 animated fadeIn fast">
           {developers.map(developer => {
             return <Developer
