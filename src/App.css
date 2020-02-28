@@ -1,3 +1,13 @@
+.auth-form{
+  width: 75%;
+  margin: 10px auto;
+}
+
+.auth-form-container{
+  width: 50%;
+  margin:100px auto;
+}
+
 .game{
   background-color: #343A40;
   color: #28A645;
@@ -7,7 +17,7 @@ hr{
   background-color: #28A645;
 }
 
- .gamesearch, .gamesearch:focus{
+ .search, .search:focus{
   background-color:#343A40;
   color: #28A645;
   border-color: #28A645;

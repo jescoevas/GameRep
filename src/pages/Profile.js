@@ -21,12 +21,16 @@ export class Profile extends Component{
   }
 
   componentDidMount(){
-    fetch(`https://react-gamerep.firebaseio.com/users/${userId.substring(1,userId.length-1)}.json`).then(res => res.json())
-    .then(user => {
-      if(user !== null){
-        this.setState({user})
-      }
-    })
+    try{
+      fetch(`https://react-gamerep.firebaseio.com/users/${userId.substring(1,userId.length-1)}.json`).then(res => res.json())
+      .then(user => {
+        if(user !== null){
+          this.setState({user})
+        }
+      })
+    }catch(e){
+
+    }
   }
 
   toArray = (data) => {
@@ -43,11 +47,12 @@ export class Profile extends Component{
   _renderGames = (games) => {
     games = this.toArray(games)
     return games.length ===0 ?
-    <small>There are no games to show</small>:
+    <small className='mt-5 ml-5'>There are no games to show</small>:
     <GameList games={games}/>
   }
 
   render(){
+    
     let logged = JSON.parse(localStorage.getItem('logged'))
     if(!logged){
       return window.location.replace('/home')
@@ -56,14 +61,14 @@ export class Profile extends Component{
     let {favouritegames, playedgames,gamestoplay} = this.state.user
 
     return(
-      <div className='mt-5 mb-5 animated fadeIn fast'>
-        <h2><u>Favourite games</u></h2>
+      <div className='mb-5 animated fadeIn fast'>
+        <h2 className='mt-4 ml-5 mr-5'><u>Favourite games</u></h2>
         {this._renderGames(favouritegames)}
-        <hr/>
-        <h2><u>Played games</u></h2>
+        <hr className='ml-5 mr-5'/>
+        <h2 className='ml-5 mr-5'><u>Played games</u></h2>
         {this._renderGames(playedgames)}
-        <hr/>
-        <h2><u>Games you want to play</u></h2>
+        <hr className='ml-5 mr-5'/>
+        <h2 className='ml-5 mr-5'><u>Games you want to play</u></h2>
         {this._renderGames(gamestoplay)}
       </div>
     )

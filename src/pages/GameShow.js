@@ -74,7 +74,7 @@ export class GameShow extends Component{
         </div>
         <hr/>
         <h2 style={{textDecoration:'underline'}}>Developers</h2>
-        <div className="card-columns mt-4 animated fadeIn fast">
+        <div className="card-columns mt-4 mb-4 animated fadeIn fast">
           {developers.map(developer => {
             return <Developer
                     key={developer.id}

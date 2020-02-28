@@ -43,9 +43,16 @@ export class Navbar extends Component{
     <button type='button' className='btn btn-outline-success' onClick={this._logout}>
       Log out
     </button> :
-    <button type='button' className='btn btn-outline-success' onClick={this._login}>
-      Log in
-    </button>
+    <div>
+      <button type='button' className='btn btn-outline-success mr-1' onClick={this._login}>
+        Log in
+      </button>
+      <NavLink to={'/signup'}>
+        <button type='button' className='btn btn-outline-success'>
+          Sign up
+        </button>
+      </NavLink>
+    </div>
   }
 
   _renderProfile = () => {

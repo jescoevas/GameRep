@@ -8,7 +8,7 @@ export const GameSearch = (props) => {
               <input
               type="text"
               spellCheck="false"
-              className="form-control m-5 gamesearch"
+              className="form-control m-5 search"
               placeholder="Search for a game"
               onChange={e => props.onResults(e.target.value)}/>
           </div>
