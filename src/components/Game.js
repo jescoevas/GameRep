@@ -10,6 +10,7 @@ export class Game extends Component{
     rating:PropTypes.number,
     genres:PropTypes.array
   }
+
   render(){
     let {id, name, background_image, rating, genres} = this.props
     return (

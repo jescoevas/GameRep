@@ -38,6 +38,7 @@ export class Search extends Component{
                 id="search"
                 className="form-control m-5 gamesearch"
                 placeholder="Search for a game"
+                autoComplete='off'
                 onChange={e => this._checkResults(e.target.value)}/>
             </div>
         </div>
