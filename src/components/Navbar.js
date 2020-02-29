@@ -67,7 +67,7 @@ export class Navbar extends Component{
     return(
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <span className="navbar-brand">
-              <img src="logo192.png" width="30" height="30" alt="Logo"/>
+              <img src="gamerep.png" width="30" height="30" alt="Logo"/>
           </span>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
