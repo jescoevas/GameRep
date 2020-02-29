@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 const IsLogged = JSON.parse(localStorage.getItem('logged'))
 const initialUser = {
@@ -45,6 +46,17 @@ export class Game extends Component{
     return res
   }
 
+  _addToFavourites = () => {
+    const {id, name, background_image, rating, genres} = this.props
+    axios.post(
+      `https://react-gamerep.firebaseio.com/users/${IsLogged}/favouritegames.json`,
+      {
+        id,name,background_image,rating,genres
+      }
+    ).then(res => console.log('Exito'))
+     .catch(err => console.log(err))
+  }
+
   _renderFavourites = () => {
     if(IsLogged){
       const {id} = this.props
@@ -52,13 +64,17 @@ export class Game extends Component{
       if(favouritegames !== null && favouritegames !== undefined){
         let found = Object.keys(favouritegames).find(key => Number(key) === id)
         if(!found){
-          return <button type="button" className='btn btn-outline-success btn-block mt-1'>
-                    <i className='fa fa-plus mr-1'></i>
+          return <button type="button"
+                          className='btn btn-outline-success btn-block mt-1'
+                          onClick={this._addToFavourites}>
+                  <i className='fa fa-plus mr-1'></i>
                      Add to favourites
                  </button>
         }
       }else{
-        return <button type="button" className='btn btn-outline-success btn-block mt-1'>
+        return <button type="button"
+                        className='btn btn-outline-success btn-block mt-1'
+                        onClick={this._addToFavourites}>
                   <i className='fa fa-plus mr-1'></i>
                    Add to favourites
                </button>

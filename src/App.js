@@ -21,7 +21,7 @@ var firebaseConfig = {
   appId: "1:405828588992:web:ec479766fdaee2e1562425",
   measurementId: "G-GLRDDNFED9"
 };
-export const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const FirebaseApp = firebase.initializeApp(firebaseConfig);
 
 
 function App() {
