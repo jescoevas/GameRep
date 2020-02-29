@@ -62,7 +62,7 @@ export class Game extends Component{
     const {id} = this.props
     let idRemove = Object.keys(favouritegames).find(key => favouritegames[key].gid === id)
     axios.delete(`https://react-gamerep.firebaseio.com/users/${IsLogged}/favouritegames/${idRemove}.json`)
-      .then(res => console.log('Exito'))
+      .then(res => window.location.replace('/profile'))
       .catch(err => console.log(err))
   }
 
@@ -82,7 +82,7 @@ export class Game extends Component{
     const {id} = this.props
     let idRemove = Object.keys(playedgames).find(key => playedgames[key].gid === id)
     axios.delete(`https://react-gamerep.firebaseio.com/users/${IsLogged}/playedgames/${idRemove}.json`)
-      .then(res => console.log('Exito'))
+      .then(res => window.location.replace('/profile'))
       .catch(err => console.log(err))
   }
 
@@ -102,7 +102,7 @@ export class Game extends Component{
     const {id} = this.props
     let idRemove = Object.keys(gamestoplay).find(key => gamestoplay[key].gid === id)
     axios.delete(`https://react-gamerep.firebaseio.com/users/${IsLogged}/gamestoplay/${idRemove}.json`)
-      .then(res => console.log('Exito'))
+      .then(res => window.location.replace('/profile'))
       .catch(err => console.log(err))
   }
 
