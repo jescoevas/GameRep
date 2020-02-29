@@ -9,7 +9,6 @@ export class Home extends Component{
       games:[]
     }
   }
-  //?search=harry potter chamber of secrets
   componentDidMount(){
     fetch(`https://api.rawg.io/api/games`).then(data => data.json())
       .then(data => {

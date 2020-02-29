@@ -17,6 +17,7 @@ export class Navbar extends Component{
       this.setState({logged:true})
       localStorage.setItem('logged',JSON.stringify(data.user.uid))
       console.log(data);
+      window.location.replace('/profile')
     })
 
   }
@@ -47,11 +48,6 @@ export class Navbar extends Component{
       <button type='button' className='btn btn-outline-success mr-1' onClick={this._login}>
         Log in
       </button>
-      <NavLink to={'/signup'}>
-        <button type='button' className='btn btn-outline-success'>
-          Sign up
-        </button>
-      </NavLink>
     </div>
   }
 

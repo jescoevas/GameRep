@@ -8,7 +8,7 @@ export class GameList extends Component{
   }
 
   toArray = (data) => {
-    if(data === null) return []
+    if(data === null || data===undefined) return []
     let res = []
     Object.keys(data).forEach(i => {
       let user = data[i]

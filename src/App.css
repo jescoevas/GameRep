@@ -1,13 +1,3 @@
-.auth-form{
-  width: 75%;
-  margin: 10px auto;
-}
-
-.auth-form-container{
-  width: 50%;
-  margin:100px auto;
-}
-
 .game{
   background-color: #343A40;
   color: #28A645;
@@ -22,6 +12,7 @@ hr{
   color: #28A645;
   border-color: #28A645;
   text-decoration: none;
+  text-align: center;
 }
 
 .row, h2, small{

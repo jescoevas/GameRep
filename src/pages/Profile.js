@@ -7,8 +7,7 @@ const initialUser = {
   gamestoplay:[]
 }
 
-const userId = localStorage.getItem('logged')
-//userId.substring(1,userId.length-1)
+const userId = JSON.parse(localStorage.getItem('logged'))
 const testId= 'lDJ31Cnl4yYF56KzJQV7xLPPWOZ2'
 
 export class Profile extends Component{
@@ -21,16 +20,12 @@ export class Profile extends Component{
   }
 
   componentDidMount(){
-    try{
-      fetch(`https://react-gamerep.firebaseio.com/users/${userId.substring(1,userId.length-1)}.json`).then(res => res.json())
+      fetch(`https://react-gamerep.firebaseio.com/users/${userId}.json`).then(res => res.json())
       .then(user => {
         if(user !== null){
           this.setState({user})
         }
       })
-    }catch(e){
-
-    }
   }
 
   toArray = (data) => {
@@ -52,7 +47,7 @@ export class Profile extends Component{
   }
 
   render(){
-    
+
     let logged = JSON.parse(localStorage.getItem('logged'))
     if(!logged){
       return window.location.replace('/home')
