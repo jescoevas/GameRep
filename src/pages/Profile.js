@@ -8,7 +8,7 @@ const initialUser = {
 }
 
 const userId = JSON.parse(localStorage.getItem('logged'))
-const testId= 'lDJ31Cnl4yYF56KzJQV7xLPPWOZ2'
+//const testId= 'lDJ31Cnl4yYF56KzJQV7xLPPWOZ2'
 
 export class Profile extends Component{
 
@@ -41,9 +41,19 @@ export class Profile extends Component{
 
   _renderGames = (games) => {
     games = this.toArray(games)
+    games = this.setGID(games)
     return games.length ===0 ?
     <small className='mt-5 ml-5'>There are no games to show</small>:
     <GameList games={games}/>
+  }
+
+  setGID = (games) => {
+    if(games.length !== 0){
+      games.forEach(g => {
+        g.id = g.gid
+      });
+    }
+    return games
   }
 
   render(){

@@ -51,9 +51,31 @@ export class Game extends Component{
     axios.post(
       `https://react-gamerep.firebaseio.com/users/${IsLogged}/favouritegames.json`,
       {
-        id,name,background_image,rating,genres
+        gid:id,name,background_image,rating,genres
       }
-    ).then(res => console.log('Exito'))
+    ).then(res => window.location.replace('/profile'))
+     .catch(err => console.log(err))
+  }
+
+  _addToPlayed = () => {
+    const {id, name, background_image, rating, genres} = this.props
+    axios.post(
+      `https://react-gamerep.firebaseio.com/users/${IsLogged}/playedgames.json`,
+      {
+        gid:id,name,background_image,rating,genres
+      }
+    ).then(res => window.location.replace('/profile'))
+     .catch(err => console.log(err))
+  }
+
+  _addToToPlay = () => {
+    const {id, name, background_image, rating, genres} = this.props
+    axios.post(
+      `https://react-gamerep.firebaseio.com/users/${IsLogged}/gamestoplay.json`,
+      {
+        gid:id,name,background_image,rating,genres
+      }
+    ).then(res => window.location.replace('/profile'))
      .catch(err => console.log(err))
   }
 
@@ -61,8 +83,9 @@ export class Game extends Component{
     if(IsLogged){
       const {id} = this.props
       const {favouritegames} = this.state.user
+      console.log(favouritegames);
       if(favouritegames !== null && favouritegames !== undefined){
-        let found = Object.keys(favouritegames).find(key => Number(key) === id)
+        let found = Object.keys(favouritegames).find(key => favouritegames[key].gid === id)
         if(!found){
           return <button type="button"
                           className='btn btn-outline-success btn-block mt-1'
@@ -88,15 +111,19 @@ export class Game extends Component{
       const {id} = this.props
       const {playedgames} = this.state.user
       if(playedgames !== null && playedgames !== undefined){
-        let found = Object.keys(playedgames).find(key => Number(key) === id)
+        let found = Object.keys(playedgames).find(key => playedgames[key].gid === id)
         if(!found){
-          return <button type="button" className='btn btn-outline-success btn-block mt-1'>
+          return <button type="button"
+                          className='btn btn-outline-success btn-block mt-1'
+                          onClick={this._addToPlayed}>
                     <i className='fa fa-plus mr-1'></i>
                      Add to played
                  </button>
         }
       }else{
-        return <button type="button" className='btn btn-outline-success btn-block mt-1'>
+        return <button type="button"
+                        className='btn btn-outline-success btn-block mt-1'
+                        onClick={this._addToPlayed}>
                   <i className='fa fa-plus mr-1'></i>
                    Add to played
                </button>
@@ -110,15 +137,19 @@ export class Game extends Component{
       const {id} = this.props
       const {gamestoplay} = this.state.user
       if(gamestoplay !== null && gamestoplay !== undefined){
-        let found = Object.keys(gamestoplay).find(key => Number(key) === id)
+        let found = Object.keys(gamestoplay).find(key => gamestoplay[key].gid === id)
         if(!found){
-          return <button type="button" className='btn btn-outline-success btn-block mt-1'>
+          return <button type="button"
+                          className='btn btn-outline-success btn-block mt-1'
+                          onClick={this._addToToPlay}>
                     <i className='fa fa-plus mr-1'></i>
                      Add to play
                  </button>
         }
       }else{
-        return <button type="button" className='btn btn-outline-success btn-block mt-1'>
+        return <button type="button"
+                              className='btn btn-outline-success btn-block mt-1'
+                              onClick={this._addToToPlay}>
                   <i className='fa fa-plus mr-1'></i>
                    Add to play
                </button>
