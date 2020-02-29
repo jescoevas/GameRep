@@ -57,6 +57,15 @@ export class Game extends Component{
      .catch(err => console.log(err))
   }
 
+  _removeFromFavourites = () => {
+    let {favouritegames} = this.state.user
+    const {id} = this.props
+    let idRemove = Object.keys(favouritegames).find(key => favouritegames[key].gid === id)
+    axios.delete(`https://react-gamerep.firebaseio.com/users/${IsLogged}/favouritegames/${idRemove}.json`)
+      .then(res => console.log('Exito'))
+      .catch(err => console.log(err))
+  }
+
   _addToPlayed = () => {
     const {id, name, background_image, rating, genres} = this.props
     axios.post(
@@ -68,6 +77,15 @@ export class Game extends Component{
      .catch(err => console.log(err))
   }
 
+  _removeFromPlayed = () => {
+    let {playedgames} = this.state.user
+    const {id} = this.props
+    let idRemove = Object.keys(playedgames).find(key => playedgames[key].gid === id)
+    axios.delete(`https://react-gamerep.firebaseio.com/users/${IsLogged}/playedgames/${idRemove}.json`)
+      .then(res => console.log('Exito'))
+      .catch(err => console.log(err))
+  }
+
   _addToToPlay = () => {
     const {id, name, background_image, rating, genres} = this.props
     axios.post(
@@ -77,6 +95,15 @@ export class Game extends Component{
       }
     ).then(res => window.location.replace('/profile'))
      .catch(err => console.log(err))
+  }
+
+  _removeFromToPlay = () => {
+    let {gamestoplay} = this.state.user
+    const {id} = this.props
+    let idRemove = Object.keys(gamestoplay).find(key => gamestoplay[key].gid === id)
+    axios.delete(`https://react-gamerep.firebaseio.com/users/${IsLogged}/gamestoplay/${idRemove}.json`)
+      .then(res => console.log('Exito'))
+      .catch(err => console.log(err))
   }
 
   _renderFavourites = () => {
@@ -92,6 +119,13 @@ export class Game extends Component{
                           onClick={this._addToFavourites}>
                   <i className='fa fa-plus mr-1'></i>
                      Add to favourites
+                 </button>
+        }else{
+          return <button type="button"
+                          className='btn btn-outline-danger btn-block mt-1'
+                          onClick={this._removeFromFavourites}>
+                  <i className='fa fa-trash mr-1'></i>
+                     Remove from favourites
                  </button>
         }
       }else{
@@ -119,6 +153,13 @@ export class Game extends Component{
                     <i className='fa fa-plus mr-1'></i>
                      Add to played
                  </button>
+        }else{
+          return <button type="button"
+                          className='btn btn-outline-danger btn-block mt-1'
+                          onClick={this._removeFromPlayed}>
+                  <i className='fa fa-trash mr-1'></i>
+                     Remove from played
+                 </button>
         }
       }else{
         return <button type="button"
@@ -144,6 +185,13 @@ export class Game extends Component{
                           onClick={this._addToToPlay}>
                     <i className='fa fa-plus mr-1'></i>
                      Add to play
+                 </button>
+        }else{
+          return <button type="button"
+                          className='btn btn-outline-danger btn-block mt-1'
+                          onClick={this._removeFromToPlay}>
+                  <i className='fa fa-trash mr-1'></i>
+                     Remove from to play
                  </button>
         }
       }else{
@@ -180,6 +228,7 @@ export class Game extends Component{
           </p>
           <Link to={`/game/show/${id}`} className='link'>
             <button type="button" className="btn btn-outline-success btn-block">
+              <i className='fa fa-eye mr-1'></i>
               See more
             </button>
           </Link>
